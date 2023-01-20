@@ -15,6 +15,12 @@ mongoose.connect("mongodb://localhost:27017")
 
 app.on("ready", () => {
 
+	app.use((req, res, next) => {
+		res.setHeader("Access-Control-Allow-Origin", "*");
+		res.setHeader("Access-Control-Allow-Origin", "*");
+		res.setHeader("Access-Control-Allow-Origin", "*");
+		next();
+	});
 	app.use("/uploads", express.static(path.resolve(__dirname, "..", "uploads")));
 	app.use(express.urlencoded({ extended: true }));
 	app.use(express.json());
