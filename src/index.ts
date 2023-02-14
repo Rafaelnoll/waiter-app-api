@@ -11,12 +11,15 @@ const app = express();
 const server = http.createServer(app);
 export const io = new Server(server);
 
-mongoose.connect("mongodb://localhost:27017")
+mongoose.connect("mongodb://127.0.0.1:27017")
 	.then(() => {
 		app.emit("ready");
 		console.log("Connected with mongo");
 	})
-	.catch(() => console.log("Error to connect with mongo"));
+	.catch((error) => {
+		console.log(error);
+		console.log("Error to connect with mongo");
+	});
 
 app.on("ready", () => {
 

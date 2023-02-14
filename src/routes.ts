@@ -12,6 +12,7 @@ import { listOrders } from "./app/useCases/orders/listOrders";
 import { createOrder } from "./app/useCases/orders/createOrder";
 import { changeOrderStatus } from "./app/useCases/orders/changeOrderStatus";
 import { cancelOrder } from "./app/useCases/orders/cancelOrder";
+import { listOneProduct } from "./app/useCases/products/listOneProduct";
 
 export const router = Router();
 
@@ -34,6 +35,9 @@ router.post("/categories", createCategory);
 
 // List products
 router.get("/products", listProducts);
+
+// List one product
+router.get("/products/:id", listOneProduct);
 
 // Create products
 router.post("/products", upload.single("image"), createProduct);
