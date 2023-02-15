@@ -13,6 +13,7 @@ import { createOrder } from "./app/useCases/orders/createOrder";
 import { changeOrderStatus } from "./app/useCases/orders/changeOrderStatus";
 import { cancelOrder } from "./app/useCases/orders/cancelOrder";
 import { listOneProduct } from "./app/useCases/products/listOneProduct";
+import { deleteProduct } from "./app/useCases/products/deleteProduct";
 
 export const router = Router();
 
@@ -38,6 +39,9 @@ router.get("/products", listProducts);
 
 // List one product
 router.get("/products/:id", listOneProduct);
+
+// Delete one product
+router.delete("/products/:id", deleteProduct);
 
 // Create products
 router.post("/products", upload.single("image"), createProduct);
