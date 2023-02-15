@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { io } from "../../..";
 
 import { Product } from "../../models/Product";
 
@@ -16,6 +17,7 @@ export async function createProduct(req: Request, res: Response) {
 			category,
 		});
 
+		io.emit("product@new", product);
 		res.status(201).json(product);
 	} catch (error) {
 		console.log(error);
