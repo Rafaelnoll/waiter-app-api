@@ -6,8 +6,6 @@ export async function listOneProduct(req: Request, res: Response) {
 
 	try {
 		const product = await Product.findById(id);
-		console.log(id);
-		console.log(product);
 		res.json(product);
 	} catch (error) {
 		console.log(error);
