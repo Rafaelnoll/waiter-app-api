@@ -20,12 +20,12 @@ export async function updateCategory(req: Request, res: Response) {
 
 		if (!product) {
 			res.status(404);
-			res.json({ msg: "Product not found!" });
+			res.json({ msg: "Category not found!" });
 			return;
 		}
 
 		res.status(200);
-		res.json({ msg: "Product updated!" });
+		res.json({ msg: "Category updated!" });
 	} catch (error) {
 		console.log(error);
 		res.status(500).json({

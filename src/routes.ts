@@ -17,6 +17,7 @@ import { deleteProduct } from "./app/useCases/products/deleteProduct";
 import { updateProduct } from "./app/useCases/products/updateProduct";
 import { findCategoryById } from "./app/useCases/categories/findCategoryById";
 import { updateCategory } from "./app/useCases/categories/updateCategory";
+import { deleteCategory } from "./app/useCases/categories/deleteCategory";
 
 export const router = Router();
 
@@ -39,6 +40,9 @@ router.get("/categories/:id", findCategoryById);
 
 // Find Category By Id and update
 router.patch("/categories/:id", updateCategory);
+
+// Find Category By Id and delete
+router.delete("/categories/:id", deleteCategory);
 
 // Create category
 router.post("/categories", createCategory);
