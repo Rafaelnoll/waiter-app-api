@@ -16,6 +16,7 @@ import { listOneProduct } from "./app/useCases/products/listOneProduct";
 import { deleteProduct } from "./app/useCases/products/deleteProduct";
 import { updateProduct } from "./app/useCases/products/updateProduct";
 import { findCategoryById } from "./app/useCases/categories/findCategoryById";
+import { updateCategory } from "./app/useCases/categories/updateCategory";
 
 export const router = Router();
 
@@ -35,6 +36,9 @@ router.get("/categories", listCategories);
 
 // Find Category By Id
 router.get("/categories/:id", findCategoryById);
+
+// Find Category By Id and update
+router.patch("/categories/:id", updateCategory);
 
 // Create category
 router.post("/categories", createCategory);
