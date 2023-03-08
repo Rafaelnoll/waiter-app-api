@@ -15,6 +15,7 @@ import { cancelOrder } from "./app/useCases/orders/cancelOrder";
 import { listOneProduct } from "./app/useCases/products/listOneProduct";
 import { deleteProduct } from "./app/useCases/products/deleteProduct";
 import { updateProduct } from "./app/useCases/products/updateProduct";
+import { findCategoryById } from "./app/useCases/categories/findCategoryById";
 
 export const router = Router();
 
@@ -31,6 +32,9 @@ const upload = multer({
 
 // List categories
 router.get("/categories", listCategories);
+
+// Find Category By Id
+router.get("/categories/:id", findCategoryById);
 
 // Create category
 router.post("/categories", createCategory);
