@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { io } from "../../..";
 import { Category as TypeCategory } from "../../../types/Category";
 import { Category } from "../../models/Category";
 
@@ -16,14 +17,17 @@ export async function updateCategory(req: Request, res: Response) {
 			updatedCategory.icon = icon;
 		}
 
-		const product = await Category.findByIdAndUpdate(id, updatedCategory);
+		const category = await Category.findByIdAndUpdate(id, updatedCategory);
 
-		if (!product) {
+		if (!category) {
 			res.status(404);
 			res.json({ msg: "Category not found!" });
 			return;
 		}
 
+		const modifiedCategory = Object.assign(category, updatedCategory);
+
+		io.emit("category@updated", modifiedCategory);
 		res.status(200);
 		res.json({ msg: "Category updated!" });
 	} catch (error) {

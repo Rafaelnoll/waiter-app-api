@@ -1,17 +1,20 @@
 import { Request, Response } from "express";
+import { io } from "../../..";
 import { Category } from "../../models/Category";
 
 export async function deleteCategory(req: Request, res: Response) {
 	const { id } = req.params;
 
 	try {
-		const product = await Category.findByIdAndDelete(id);
+		const category = await Category.findByIdAndDelete(id);
 
-		if (!product) {
+		if (!category) {
 			res.status(404);
 			res.json({ msg: "Category not found!" });
 			return;
 		}
+
+		io.emit("category@deleted", id);
 		res.status(200);
 		res.json({ msg: "Category deleted" });
 	} catch (error) {
