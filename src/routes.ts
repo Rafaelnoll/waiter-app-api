@@ -18,6 +18,11 @@ import { updateProduct } from "./app/useCases/products/updateProduct";
 import { findCategoryById } from "./app/useCases/categories/findCategoryById";
 import { updateCategory } from "./app/useCases/categories/updateCategory";
 import { deleteCategory } from "./app/useCases/categories/deleteCategory";
+import { createIngredient } from "./app/useCases/ingredients/createIngredient";
+import { listIngredients } from "./app/useCases/ingredients/listIngredients";
+import { deleteIngredient } from "./app/useCases/ingredients/deleteIngredient";
+import { updateIngredient } from "./app/useCases/ingredients/updateIngredient";
+import { findIngredientById } from "./app/useCases/ingredients/findIngredientById";
 
 export const router = Router();
 
@@ -76,3 +81,21 @@ router.patch("/orders/:orderId", changeOrderStatus);
 
 // Delete/cancel order
 router.delete("/orders/:orderId", cancelOrder);
+
+// create a ingredient
+router.post("/ingredients", createIngredient);
+
+// find all ingredients
+router.get("/ingredients", listIngredients);
+
+// delete a ingredient
+router.delete("/ingredients/:id", deleteIngredient);
+
+// find all ingredients
+router.get("/ingredients", listIngredients);
+
+// update a ingredient
+router.patch("/ingredients/:id", updateIngredient);
+
+// find a ingridient by id
+router.get("/ingredients/:id", findIngredientById);
