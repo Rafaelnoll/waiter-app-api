@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { io } from "../../..";
 import { Ingredient as TypeIngredient } from "../../../types/Ingredient";
 import { Ingredient } from "../../models/Ingredients";
 
@@ -24,8 +25,9 @@ export async function updateIngredient(req: Request, res: Response) {
 			return;
 		}
 
-		//const modifiedIngredient = Object.assign(ingredient, updatedIngredient);
+		const modifiedIngredient = Object.assign(ingredient, updatedIngredient);
 
+		io.emit("ingredient@updated", modifiedIngredient);
 		res.status(200);
 		res.json({ msg: "Ingredient updated!" });
 	} catch (error) {

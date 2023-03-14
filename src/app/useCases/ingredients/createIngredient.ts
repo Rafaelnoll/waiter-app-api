@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { Ingredient } from "../../models/Ingredients";
+import { io } from "../../..";
 
 export async function createIngredient(req: Request, res: Response) {
 	try {
@@ -10,6 +11,7 @@ export async function createIngredient(req: Request, res: Response) {
 			name,
 		});
 
+		io.emit("ingredient@new", ingredient);
 		res.status(201).json(ingredient);
 	} catch (error) {
 		console.log(error);

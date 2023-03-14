@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { io } from "../../..";
 import { Ingredient } from "../../models/Ingredients";
 
 export async function deleteIngredient(req: Request, res: Response) {
@@ -13,6 +14,7 @@ export async function deleteIngredient(req: Request, res: Response) {
 			return;
 		}
 
+		io.emit("ingredient@deleted", id);
 		res.status(200);
 		res.json({ msg: "Ingredient deleted" });
 	} catch (error) {
