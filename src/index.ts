@@ -3,10 +3,7 @@ import http from "node:http";
 import express from "express";
 import mongoose from "mongoose";
 import { Server } from "socket.io";
-import categoriesRoutes from "./app/routes/categoriesRoutes";
-import ingredientsRoutes from "./app/routes/ingredientsRoutes";
-import ordersRoutes from "./app/routes/ordersRoutes";
-import productsRoutes from "./app/routes/categoriesRoutes";
+import routes from "./app/routes";
 
 const PORT = 3001;
 const app = express();
@@ -40,10 +37,7 @@ app.on("ready", () => {
 	app.use(express.json());
 
 	// Routes
-	app.use(categoriesRoutes);
-	app.use(ingredientsRoutes);
-	app.use(ordersRoutes);
-	app.use(productsRoutes);
+	app.use(routes);
 
 	server.listen(PORT, () => {
 		console.log(`🚀 Server is running on http://localhost:${PORT}`);

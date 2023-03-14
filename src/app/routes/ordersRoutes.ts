@@ -6,7 +6,6 @@ import { changeOrderStatus } from "../useCases/orders/changeOrderStatus";
 import { createOrder } from "../useCases/orders/createOrder";
 import { listOrders } from "../useCases/orders/listOrders";
 
-
 // List orders
 router.get("/orders", listOrders);
 
