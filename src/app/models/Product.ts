@@ -21,6 +21,10 @@ export const Product = model("Product", new Schema({
 		required: true,
 		type: [
 			{
+				_id: {
+					type: String,
+					required:true,
+				},
 				name: {
 					type: String,
 					required: true,
